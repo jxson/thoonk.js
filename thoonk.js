@@ -420,8 +420,8 @@ Thoonk.prototype.getFeedNames = function(callback, error_callback) {
  *
  *     var pubsub = require("thoonk").createClient(host, port, db);
  */
-exports.createClient = function(host, port, db) {
-    return new Thoonk(host, port, db);
+exports.createClient = function(host, port, db, password) {
+   return new Thoonk(host, port, db, password);
 }
 
 exports.VERSION = '0.5.1';
