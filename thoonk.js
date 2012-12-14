@@ -21,7 +21,7 @@ var Feed = exports.Feed = require("./feed.js").Feed,
  * @param host
  * @param port
  */
-var Thoonk = exports.Thoonk = function Thoonk(host, port, db) {
+var Thoonk = exports.Thoonk = function Thoonk(host, port, db, password) {
     host || (host = "127.0.0.1");
     port || (port = 6379);
     db || (db = 0);
@@ -30,9 +30,11 @@ var Thoonk = exports.Thoonk = function Thoonk(host, port, db) {
     this.db = db;
     EventEmitter.call(this);
     this.lredis = redis.createClient(port, host);
+    if (password) this.lredis.auth(password)
     this.lredis.select(db);
     this.lredis.subscribe("newfeed", "delfeed", "conffeed");
     this.mredis = redis.createClient(port, host);
+    if (password) this.mredis.auth(password)
     this.mredis.select(db);
     this.lock = new padlock.Padlock();
 
