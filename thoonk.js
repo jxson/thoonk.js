@@ -27,6 +27,7 @@ var Thoonk = exports.Thoonk = function Thoonk(host, port, db, password) {
     db || (db = 0);
     this.host = host;
     this.port = port;
+    this.password = password;
     this.db = db;
     EventEmitter.call(this);
     this.lredis = redis.createClient(port, host);
