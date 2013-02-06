@@ -228,7 +228,7 @@ function jobFinish(id, callback, setresult) {
                 if(reply == null) {
                     //watch failed, try again
                     process.nextTick(function() {
-                        this.finish(id, callback, setresult, timeout);
+                        this.finish(id, callback, setresult);
                     }.bind(this));
                 } else {
                     if(callback) {
